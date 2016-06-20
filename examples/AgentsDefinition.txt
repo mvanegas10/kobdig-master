@@ -1,0 +1,46 @@
+FAMILY AGENT
+  - The family wants to change home with a "Possibility degree" p (BELIEF OR DESIRE?)
+  - The family wants to change home and buy with a "Possibility degree" p (BELIEF OR DESIRE?)
+  - The family wants to change home and rent with a "Possibility degree" p (BELIEF OR DESIRE?)
+  - The family is landlord with a "Possibility degree" p (BELIEF)
+  - The family is landlord and wants to sell with a "Possibility degree" p (BELIEF)
+  - The family is landlord and is seeking tenant with a "Possibility degree" p (BELIEF)
+  - The family is landlord and home is rented with a "Possibility degree" p (BELIEF)
+
+  PROPOSITIONS
+    - c: Family wants to change home
+    - b: Family wants to buy a home
+    - r: Family wants to rent a home
+    - l: Family is landlord
+    - ls: Family is landlord and is selling
+    - lst: Family is landlord and is seeking tenant
+    - lr: Family is landlord and is renting
+
+PROMOTER AGENT
+  - If the promoter has enough money, he buys the land (DESIRE)
+  - If the promoter doesn't have enough money, he asks for a credit with a bank (DESIRE)
+  - The promoter meets the requirements for the bank's credit with a "Possibility degree" p (BELIEF)
+  - If the promoter asks for money to the bank and meets the requirements, the promoter gets a credit
+    with a "Possibility degree" p (BELIEF)
+  - If the promoter gets the credit, the promoter has enough money to buy the land with a "Possibility
+    degree" p (BELIEF)
+  - If the promoter asked for a credit and gets it, he buys the land (DESIRE)
+  - If the promoter has the land, the promoter asks for a planning permission to the urban planner (DESIRE)
+  - The promoter meets the requirements for the planning permission with a "Possibility degree" p (BELIEF)
+  - If the promoter asked for a planning permission and meets the requirements, the promoter gets the
+    planning permission with a "Possibility degree" p (BELIEF)
+  - If the promoter has the land and has the planning permission, he sells off-plans with a "Possibility
+    degree" p (BELIEF)
+  - If the promoter has the land and has the planning permission, he sells off-plans with a "Possibility
+    degree" p (BELIEF)
+
+  PROPOSITIONS
+    - m: Promoter has enough money to buy the land
+    - ac: Promoter asks for a credit with a bank
+    - mrc: Promoter meets the requirements for the bank's credit
+    - gc: Promoter gets credit from bank
+    - b: Promoter buys the land
+    - ap: Promoter asks for a planning permission
+    - mrp: Promoter meets the requirements for the planning permission
+    - gp: Promoter gets the planning permission
+    - sop: Promoter sells off-plans
