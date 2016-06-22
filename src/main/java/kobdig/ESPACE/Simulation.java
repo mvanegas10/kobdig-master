@@ -169,6 +169,21 @@ public class Simulation {
 
         numSim = scan.nextInt();
 
+        // Creates the report files
+
+        BufferedWriter neigWriter = null;
+        BufferedWriter propWriter = null;
+        BufferedWriter famWriter = null;
+
+        try {
+            neigWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("/Users/Meili/Desktop/ESPACE/kobdig-master/src/main/java/kobdig/docs/neigoborhoodsReport.csv")));
+            propWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("/Users/Meili/Desktop/ESPACE/kobdig-master/src/main/java/kobdig/docs/neigoborhoodsReport.csv")));
+            famWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("/Users/Meili/Desktop/ESPACE/kobdig-master/src/main/java/kobdig/docs/neigoborhoodsReport.csv")));
+        } catch (FileNotFoundException e) {
+            System.out.println("Simulation.main: Create reports");
+            e.printStackTrace();
+        }
+
         // Instantiates all the classes
 
         try {
@@ -204,29 +219,40 @@ public class Simulation {
 
         // Runs the simulation
 
-        for(time = 0; time < numSim; time++){
+        try {
 
-            System.out.println("Neighborhoods report");
+            neigWriter.write("TIME,NAME,STATUS\n");
+            propWriter.write("TIME,ID,NEIGHBORHOOD,OWNER_RELATION,STATE,PRICE,CAPITALIZED_RENT,POTENTIAL_RENT,VALUE\n");
+            famWriter.write("TIME,LASTNAME,PURCHASING_POWER,NET_MONTHLY_INCOME\n");
 
-            for(int i = 0; i < neighborhoods.size(); i++){
-                Neighborhood current = neighborhoods.get(i);
-                current.step(time);
+            for(time = 0; time < numSim; time++){
+                System.out.println("Neighborhoods report");
 
+                for(int i = 0; i < neighborhoods.size(); i++){
+                    Neighborhood current = neighborhoods.get(i);
+                    neigWriter.write(time + "," + current.toString() + "\n");
+                    current.step(time);
+                }
+
+                System.out.println("Properties report");
+
+                for(int i = 0; i < properties.size(); i++){
+                    Property current = properties.get(i);
+                    propWriter.write(time + "," + current.toString() + "\n");
+                    current.step(time);
+                }
+
+                System.out.println("Families report");
+
+                for(int i = 0; i < families.size(); i++){
+                    Family current = families.get(i);
+                    famWriter.write(time + "," + current.toString() + "\n");
+                    current.step(time);
+                }
             }
-
-            System.out.println("Properties report");
-
-            for(int i = 0; i < properties.size(); i++){
-                Property current = properties.get(i);
-                current.step(time);
-            }
-
-            System.out.println("Families report");
-
-            for(int i = 0; i < families.size(); i++){
-                Family current = families.get(i);
-                current.step(time);
-            }
+        } catch (IOException e) {
+            System.out.println("Simulation.main: Writing files");
+            e.printStackTrace();
         }
 
         try {
