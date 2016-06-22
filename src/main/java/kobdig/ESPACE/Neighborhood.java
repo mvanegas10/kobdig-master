@@ -55,10 +55,6 @@ public class Neighborhood {
 
     // METHODS
 
-    public void step(int time){
-
-    }
-
     public String toString(){
         return name +  "," + status;
     }

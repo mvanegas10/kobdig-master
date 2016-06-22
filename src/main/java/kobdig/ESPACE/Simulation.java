@@ -65,6 +65,31 @@ public class Simulation {
     }
 
     /**
+     * Generates a neighborhood step in the simulation
+     * @param neighborhood The neighborhood
+     */
+    public static void neighborhoodStep(Neighborhood neighborhood){
+        int count = 0;
+        double sum = 0.0;
+        for (int i = 0; i < properties.size(); i++){
+            Property current = properties.get(i);
+            if (neighborhood.getName().equals(current.getNeighborhood())) {
+                sum += current.getCurrentValue() - current.getPreviousValue();
+            }
+        }
+        double average = sum/count;
+        neighborhood.setStatus(neighborhood.getStatus() + 2*average + Math.random()*Neighborhood.STATUS_VARIABILITY);
+    }
+
+    /**
+     * Generates a family step in the simulation
+     * @param family The family
+     */
+    public static void familyStep(Family family){
+
+    }
+
+    /**
      * Instantiates all the neighborhoods in the file
      * @param file The neighborhood.csv file
      * @throws FileNotFoundException If the file isn't found
@@ -223,18 +248,9 @@ public class Simulation {
 
             neigWriter.write("TIME,NAME,STATUS\n");
             propWriter.write("TIME,ID,NEIGHBORHOOD,OWNER_RELATION,STATE,PRICE,CAPITALIZED_RENT,POTENTIAL_RENT,VALUE\n");
-            famWriter.write("TIME,LASTNAME,PURCHASING_POWER,NET_MONTHLY_INCOME\n");
+            famWriter.write("TIME,LASTNAME,HAS_PROPERTY,PURCHASING_POWER,NET_MONTHLY_INCOME\n");
 
             for(time = 0; time < numSim; time++){
-                System.out.println("Neighborhoods report");
-
-                for(int i = 0; i < neighborhoods.size(); i++){
-                    Neighborhood current = neighborhoods.get(i);
-                    neigWriter.write(time + "," + current.toString() + "\n");
-                    current.step(time);
-                }
-
-                System.out.println("Properties report");
 
                 for(int i = 0; i < properties.size(); i++){
                     Property current = properties.get(i);
@@ -242,13 +258,18 @@ public class Simulation {
                     current.step(time);
                 }
 
-                System.out.println("Families report");
+                for(int i = 0; i < neighborhoods.size(); i++){
+                    Neighborhood current = neighborhoods.get(i);
+                    neigWriter.write(time + "," + current.toString() + "\n");
+                    neighborhoodStep(current);
+                }
 
                 for(int i = 0; i < families.size(); i++){
                     Family current = families.get(i);
                     famWriter.write(time + "," + current.toString() + "\n");
-                    current.step(time);
+                    familyStep(current);
                 }
+
             }
         } catch (IOException e) {
             System.out.println("Simulation.main: Writing files");

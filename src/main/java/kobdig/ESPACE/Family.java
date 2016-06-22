@@ -36,6 +36,8 @@ public class Family {
 
     public Family(String id, String lastname, double purchasingPower, double netMonthlyIncome) {
         this.id = id;
+        this.property = null;
+        this.lastname = lastname;
         this.purchasingPower = purchasingPower;
         this.netMonthlyIncome = netMonthlyIncome;
     }
@@ -84,11 +86,17 @@ public class Family {
 
     // METHODS
 
-    public void step(int time){
-
+    /**
+     * Returns YES if the family is landlord, otherwise, returns NO
+     * @return YES if the family is landlord, otherwise, returns NO
+     */
+    public String hasProperty(){
+        if (property != null) return "YES";
+        return "NO";
     }
 
+
     public String toString(){
-        return id + "," + lastname  + "," + purchasingPower  + "," + netMonthlyIncome;
+        return id + "," + lastname  + "," + hasProperty() + "," + purchasingPower  + "," + netMonthlyIncome;
     }
 }

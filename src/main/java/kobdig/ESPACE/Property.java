@@ -13,7 +13,7 @@ public class Property {
     // CONSTANTS
 
     /**
-     * Referente to  owner occupied
+     * Referente to owner occupied
      */
     public static final String OWNER_OCCUPIED = "Owner Occupied";
 
@@ -73,22 +73,42 @@ public class Property {
     /**
      * Current property's price
      */
-    private double price;
+    private double currentPrice;
 
     /**
      * Current capitalized ground rent
      */
-    private double capitalizedRent;
+    private double currentCapitalizedRent;
 
     /**
      * Current potential ground rent
      */
-    private double potentialRent;
+    private double currentPotentialRent;
 
     /**
      * Current property's value
      */
-    private double value;
+    private double currentValue;
+
+    /**
+     * Current property's price
+     */
+    private double previousPrice;
+
+    /**
+     * Current capitalized ground rent
+     */
+    private double previousCapitalizedRent;
+
+    /**
+     * Current potential ground rent
+     */
+    private double previousPotentialRent;
+
+    /**
+     * Current property's value
+     */
+    private double previousValue;
 
     // CONSTRUCTOR
 
@@ -98,16 +118,27 @@ public class Property {
     public Property(String id, String nNeighborhood, double nPrice, double nRent, double nValue){
         this.id = id;
         this.neighborhood = nNeighborhood;
-        this.ownerRelation = OWNER_OCCUPIED;
-        this.state = OWNER_OCCUPIED_STATES[1];
-        this.price = nPrice;
-        this.capitalizedRent = nRent;
-        this.potentialRent = nRent;
-        this.value = nValue;
+        this.ownerRelation = LANDLORD;
+        this.state = LANDLORD_STATES[0];
+        this.currentPrice = nPrice;
+        this.currentCapitalizedRent = nRent;
+        this.currentPotentialRent = nRent;
+        this.currentValue = nValue;
+        this.previousPrice = nPrice;
+        this.previousCapitalizedRent = nRent;
+        this.previousPotentialRent = nRent;
+        this.previousValue = nValue;
     }
 
     // GETTERS AND SETTERS
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getNeighborhood() {
         return neighborhood;
@@ -121,8 +152,8 @@ public class Property {
         return ownerRelation;
     }
 
-    public void setOwnerRelation(String relation) {
-        this.ownerRelation = relation;
+    public void setOwnerRelation(String ownerRelation) {
+        this.ownerRelation = ownerRelation;
     }
 
     public String getState() {
@@ -133,63 +164,91 @@ public class Property {
         this.state = state;
     }
 
-    public double getPrice() {
-        return price;
+    public double getCurrentPrice() {
+        return currentPrice;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setCurrentPrice(double currentPrice) {
+        this.currentPrice = currentPrice;
     }
 
-    public double getCapitalizedRent() {
-        return capitalizedRent;
+    public double getCurrentCapitalizedRent() {
+        return currentCapitalizedRent;
     }
 
-    public void setCapitalizedRent(double capitalizedRent) {
-        this.capitalizedRent = capitalizedRent;
+    public void setCurrentCapitalizedRent(double currentCapitalizedRent) {
+        this.currentCapitalizedRent = currentCapitalizedRent;
     }
 
-    public double getPotentialRent() {
-        return potentialRent;
+    public double getCurrentPotentialRent() {
+        return currentPotentialRent;
     }
 
-    public void setPotentialRent(double potentialRent) {
-        this.potentialRent = potentialRent;
+    public void setCurrentPotentialRent(double currentPotentialRent) {
+        this.currentPotentialRent = currentPotentialRent;
     }
 
-    public double getValue() {
-        return value;
+    public double getCurrentValue() {
+        return currentValue;
     }
 
-    public void setValue(double value) {
-        this.value = value;
+    public void setCurrentValue(double currentValue) {
+        this.currentValue = currentValue;
     }
+
+    public double getPreviousPrice() {
+        return previousPrice;
+    }
+
+    public void setPreviousPrice(double previousPrice) {
+        this.previousPrice = previousPrice;
+    }
+
+    public double getPreviousCapitalizedRent() {
+        return previousCapitalizedRent;
+    }
+
+    public void setPreviousCapitalizedRent(double previousCapitalizedRent) {
+        this.previousCapitalizedRent = previousCapitalizedRent;
+    }
+
+    public double getPreviousPotentialRent() {
+        return previousPotentialRent;
+    }
+
+    public void setPreviousPotentialRent(double previousPotentialRent) {
+        this.previousPotentialRent = previousPotentialRent;
+    }
+
+    public double getPreviousValue() {
+        return previousValue;
+    }
+
+    public void setPreviousValue(double previousValue) {
+        this.previousValue = previousValue;
+    }
+
 
     // METHODS
 
     public void step(int time){
 
-        price = (price - Math.exp(time) < 0)? 0: price - Math.exp(time);
-        potentialRent = (potentialRent + Math.log(time));
-        capitalizedRent = (capitalizedRent - Math.log(time));
-        value = (value - Math.exp(time) < 0)? 0: value - Math.exp(time);
+        previousPrice = currentPrice;
+        previousCapitalizedRent = currentCapitalizedRent;
+        previousPotentialRent = currentPotentialRent;
+        previousValue = currentValue;
 
-        double rnd1 = Math.random();
-        double rnd2 = Math.random();
-        double rnd3 = Math.random();
-        double rnd4 = Math.random();
-        double rnd5 = Math.random();
+        currentPrice = (previousPrice - Math.exp(time) < 0)? 0: previousPrice - Math.exp(time);
+        currentPotentialRent = (previousPotentialRent + Math.log(time));
+        currentCapitalizedRent = (previousCapitalizedRent - Math.log(time));
+        currentValue = (previousValue - Math.exp(time) < 0)? 0: previousValue - Math.exp(time);
 
-        if (ownerRelation.equals(OWNER_OCCUPIED)){
-            if (state.equals(OWNER_OCCUPIED_STATES[0])){
 
-            }
-        }
 
     }
 
     public String toString(){
-        return id  + "," + neighborhood + "," + ownerRelation + "," + state +  "," + price +  "," + capitalizedRent +  "," + potentialRent +  "," + value;
+        return id  + "," + neighborhood + "," + ownerRelation + "," + state +  "," + currentPrice +  "," + currentCapitalizedRent +  "," + currentPotentialRent +  "," + currentValue;
     }
 
 }
