@@ -23,25 +23,30 @@ public class Property {
     public static final String LANDLORD = "Landlord";
 
     /**
-     * Reference to Not for sale
+     * Landlord states
      */
-    public static final String NOT_FOR_SALE = "Not for sale";
+    public static final String[] LANDLORD_STATES = {"For sale", "Seeking tenant", "Rented"};
 
     /**
-     * Reference to For sale
+     * Owner occupied states
      */
-    public static final String FOR_SALE = "For sale";
+    public static final String[] OWNER_OCCUPIED_STATES = {"Not for sale", "For sale"};
 
     /**
-     * Reference to Seeking tenants
+     * Probability at any particular time step that an owner-occupier household
+     * will choose to move out
      */
-    public static final String SEEKING_TENANTS = "Seeking tenants";
+    public final static double ABANDONMENT_FACTOR = 0.0125;
 
     /**
-     * Reference to Rented
+     * Probability that a tenant household will move out in a particular time step
      */
-    public static final String RENTED = "Rented";
+    public final static double TENANT_MOBILITY = 0.0561;
 
+    /**
+     * Loss in value applied to the physical condition variable of every location every time ste
+     */
+    public final static double DEPRECIATION_RATE = 0.0028;
 
     // ATRIBUTES
 
@@ -56,10 +61,14 @@ public class Property {
     private String neighborhood;
 
     /**
-     * State of the property. Either landlord or owner occupied indicating if it is for sale, not
-     * for sale, seeking tenants or rented
+     * Either landlord or owner occupied
      */
-    private String[] state;
+    private String ownerRelation;
+
+    /**
+     * Indicates if it is for sale, not for sale, seeking tenants or rented
+     */
+    private String state;
 
     /**
      * Current property's price
@@ -89,9 +98,8 @@ public class Property {
     public Property(String id, String nNeighborhood, double nPrice, double nRent, double nValue){
         this.id = id;
         this.neighborhood = nNeighborhood;
-        this.state = new String[2];
-        this.state[0] = OWNER_OCCUPIED;
-        this.state[1] = NOT_FOR_SALE;
+        this.ownerRelation = OWNER_OCCUPIED;
+        this.state = OWNER_OCCUPIED_STATES[1];
         this.price = nPrice;
         this.capitalizedRent = nRent;
         this.potentialRent = nRent;
@@ -110,19 +118,19 @@ public class Property {
     }
 
     public String getOwnerRelation() {
-        return state[0];
+        return ownerRelation;
     }
 
     public void setOwnerRelation(String relation) {
-        this.state[0] = relation;
+        this.ownerRelation = relation;
     }
 
     public String getState() {
-        return state[1];
+        return state;
     }
 
     public void setState(String state) {
-        this.state[1] = state;
+        this.state = state;
     }
 
     public double getPrice() {
@@ -166,9 +174,22 @@ public class Property {
         capitalizedRent = (capitalizedRent - Math.log(time));
         value = (value - Math.exp(time) < 0)? 0: value - Math.exp(time);
 
-        double random = Math.random();
+        double rnd1 = Math.random();
+        double rnd2 = Math.random();
+        double rnd3 = Math.random();
+        double rnd4 = Math.random();
+        double rnd5 = Math.random();
 
+        if (ownerRelation.equals(OWNER_OCCUPIED)){
+            if (state.equals(OWNER_OCCUPIED_STATES[0])){
 
+            }
+        }
+
+    }
+
+    public String toString(){
+        return id  + "," + neighborhood + "," + ownerRelation + "," + state +  "," + price +  "," + capitalizedRent +  "," + potentialRent +  "," + value;
     }
 
 }

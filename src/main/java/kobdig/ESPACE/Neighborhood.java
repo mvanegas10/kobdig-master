@@ -7,6 +7,13 @@ import java.util.ArrayList;
  */
 public class Neighborhood {
 
+    // CONSTANTS
+
+    /**
+     * Factor affecting variability in the neighborhood status
+     */
+    public static final double STATUS_VARIABILITY = 0.025;
+
     // ATRIBUTES
 
     /**
@@ -15,17 +22,16 @@ public class Neighborhood {
     private String name;
 
     /**
-     * Properties in the neighborhood
+     * Current standing of the whole neighborhood represented in the model
      */
-    private ArrayList<Property> properties;
+    private double status;
 
 
     // CONSTRUCTOR
 
-    public Neighborhood (String nName){
-
+    public Neighborhood (String nName, double nStatus){
         this.name = nName;
-        this.properties = new ArrayList<>();
+        this.status = nStatus;
     }
 
     // GETTERS AND SETTERS
@@ -39,12 +45,22 @@ public class Neighborhood {
         this.name = name;
     }
 
-    public ArrayList<Property> getProperties(){
-        return properties;
+    public double getStatus(){
+        return status;
     }
 
-    public void addProperty(Property property){
-        this.properties.add(property);
+    public void setStatus(double status){
+        this.status = status;
+    }
+
+    // METHODS
+
+    public void step(int time){
+
+    }
+
+    public String toString(){
+        return name +  "," + status;
     }
 
 }

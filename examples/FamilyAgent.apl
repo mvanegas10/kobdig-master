@@ -1,47 +1,19 @@
 // Initial mental state of a family agent
 agent(Family)
-
-// c: Family wants to change home
-// b: Family wants to buy a home
-// r: Family wants to rent a home
-// l: Family is landlord
-// ls: Family is landlord and is selling
-// lst: Family is landlord and is seeking tenant
-// lr: Family is landlord and is renting
-
-
 {
     knowledge { }
 
     // Families initial belief base:
     beliefs
     {
-
-        // If the family is landlord and the neighborhood becomes unaffordable, the family wants to sell
-        l: p
-
-        // The family wants to change home with a "Possibility degree" p (BELIEF OR DESIRE?)
-
-
-        // The family wants to change home and buy with a "Possibility degree" p (BELIEF OR DESIRE?)
-
-        // The family wants to change home and rent with a "Possibility degree" p (BELIEF OR DESIRE?)
-
-
+        // If a property's house value is high, the property is in a good condition:
+        hhv and pgc: 0.9,
     }
 
     desires
 	{
-
-        // If the family is landlord and
-        (l and ls): p
-
-        // If the family is landlord and they have no tenant is seeking tenant with a "Possibility degree" p
-        (l and lst): p
-
-        // The family is landlord and home is rented with a "Possibility degree" p
-        (l and lr): p
-
+        // If the property is in good condition, the family wants to buy it
+        if B(pgc) then bp,
 	}
 
     obligations { }

@@ -1,8 +1,12 @@
 package kobdig.ESPACE;
 
+import kobdig.agent.Agent;
+import kobdig.gui.AgentView;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 
@@ -37,6 +41,11 @@ public class Simulation {
     protected static int time;
 
     /**
+     * The number of simulations to generate
+     */
+    protected static int numSim;
+
+    /**
      * Searches a neighborhood by name
      * @param name The name of the neighborhood
      * @return The neighborhood, null if not found
@@ -56,8 +65,8 @@ public class Simulation {
     }
 
     /**
-     * Creates all the neighborhoods
-     * @param file The file with the neighborhoods data
+     * Instantiates all the neighborhoods in the file
+     * @param file The neighborhood.csv file
      * @throws FileNotFoundException If the file isn't found
      */
     public static void createNeighborhoods(File file) throws FileNotFoundException {
@@ -67,8 +76,9 @@ public class Simulation {
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(",");
                 String name = data[0];
+                double status = Double.parseDouble(data[1]);
                 // TODO: Complete with attributes
-                Neighborhood neighborhood = new Neighborhood(name);
+                Neighborhood neighborhood = new Neighborhood(name, status);
                 neighborhoods.add(neighborhood);
             }
         } catch (IOException e) {
@@ -78,9 +88,9 @@ public class Simulation {
     }
 
     /**
-     * Creates all the properties
-     * @param file The file with the properties data
-     * @throws FileNotFoundException If the file isn't found
+     * Instantiates all the properties in the file
+     * @param file The property.csv file
+     * @throws FileNotFoundException If the file is not found
      */
     public static void createProperties(File file) throws FileNotFoundException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
@@ -102,14 +112,22 @@ public class Simulation {
         }
     }
 
+    /**
+     * Instantiates all the families in the file
+     * @param file The family.csv file
+     * @throws FileNotFoundException If the file is not found
+     */
     public static void createFamilies(File file) throws FileNotFoundException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
         String line = null;
         try {
+            int id = 0;
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(",");
-                String neighborhood = data[0];
-                Family family = new Family();
+                String lastname = data[0];
+                double purchasingPower = Double.parseDouble(data[1]);
+                double netMonthlyIncome = Double.parseDouble(data[2]);
+                Family family = new Family(Integer.toString(id++), lastname, purchasingPower, netMonthlyIncome);
                 families.add(family);
             }
         } catch (IOException e) {
@@ -124,9 +142,34 @@ public class Simulation {
         properties = new ArrayList<>();
         families = new ArrayList<>();
 
-        File neighborhood = new File("");
-        File property = new File("");
-        File family = new File("");
+        // Get initializer files
+
+        System.out.println("Please enter the path to the neighborhood.csv file:");
+        Scanner scan = new Scanner(System.in);
+
+        File neighborhood = new File(scan.next());
+
+        System.out.println("Please enter the path to the property.csv file:");
+        scan = new Scanner(System.in);
+
+        File property = new File(scan.next());
+
+        System.out.println("Please enter the path to the family.csv file:");
+        scan = new Scanner(System.in);
+
+        File family = new File(scan.next());
+
+        System.out.println("Please enter the path to the familyAgent.apl file:");
+        scan = new Scanner(System.in);
+
+        File familyAgent = new File(scan.next());
+
+        System.out.println("Please enter the number of simulations you want to generate:");
+        scan = new Scanner(System.in);
+
+        numSim = scan.nextInt();
+
+        // Instantiates all the classes
 
         try {
             createNeighborhoods(neighborhood);
@@ -149,7 +192,42 @@ public class Simulation {
             e.printStackTrace();
         }
 
+        try {
+            Agent agent = new Agent(new FileInputStream(familyAgent));
+            AgentView agentView = new AgentView(agent);
+//            agentView.setVisible(true);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
+        // Runs the simulation
+
+        for(time = 0; time < numSim; time++){
+
+            System.out.println("Neighborhoods report");
+
+            for(int i = 0; i < neighborhoods.size(); i++){
+                Neighborhood current = neighborhoods.get(i);
+                current.step(time);
+
+            }
+
+            System.out.println("Properties report");
+
+            for(int i = 0; i < properties.size(); i++){
+                Property current = properties.get(i);
+                current.step(time);
+            }
+
+            System.out.println("Families report");
+
+            for(int i = 0; i < families.size(); i++){
+                Family current = families.get(i);
+                current.step(time);
+            }
+        }
 
         try {
             TimeUnit.SECONDS.sleep(1);
