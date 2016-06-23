@@ -1,0 +1,101 @@
+TIME,ID,NEIGHBORHOOD,OWNER_RELATION,STATE,PRICE,CAPITALIZED_RENT,POTENTIAL_RENT,VALUE
+0,0,San Patricio,Landlord,For sale,560.0,0.8,0.8,250.0
+0,1,San Patricio,Landlord,For sale,200.0,0.4,0.4,100.0
+1,0,San Patricio,Owner Occupied,Not for sale,559.0,0.8,0.8,249.0
+1,1,San Patricio,Landlord,Rented,199.0,0.4,0.4,99.0
+2,0,San Patricio,Owner Occupied,Not for sale,556.281718171541,0.10685281944005476,1.4931471805599452,246.28171817154094
+2,1,San Patricio,Landlord,Rented,196.28171817154094,0.0,1.0931471805599453,96.28171817154096
+3,0,San Patricio,Owner Occupied,Not for sale,548.8926620726104,0.0,2.5917594692280552,238.8926620726103
+3,1,San Patricio,Landlord,Rented,188.8926620726103,0.0,2.191759469228055,88.8926620726103
+4,0,San Patricio,Owner Occupied,Not for sale,528.8071251494227,0.0,3.978053830347946,218.80712514942263
+4,1,San Patricio,Landlord,Rented,168.80712514942263,0.0,3.5780538303479457,68.80712514942263
+5,0,San Patricio,Owner Occupied,Not for sale,474.2089751162785,0.0,5.5874917427820465,164.2089751162784
+5,1,San Patricio,Landlord,Rented,114.2089751162784,0.0,5.187491742782046,14.208975116278395
+6,0,San Patricio,Owner Occupied,Not for sale,325.79581601370194,0.0,7.379251212010102,15.795816013701796
+6,1,San Patricio,Landlord,Rented,0.0,0.0,6.979251212010102,0.0
+7,0,San Patricio,Owner Occupied,Not for sale,0.0,0.0,9.325161361065415,0.0
+7,1,San Patricio,Landlord,Rented,0.0,0.0,8.925161361065415,0.0
+8,0,San Patricio,Owner Occupied,Not for sale,0.0,0.0,11.404602902745252,0.0
+8,1,San Patricio,Landlord,Rented,0.0,0.0,11.004602902745251,0.0
+9,0,San Patricio,Owner Occupied,Not for sale,0.0,0.0,13.601827480081472,0.0
+9,1,San Patricio,Landlord,Rented,0.0,0.0,13.201827480081471,0.0
+10,0,San Patricio,Owner Occupied,Not for sale,0.0,0.0,15.904412573075518,0.0
+10,1,San Patricio,Landlord,Rented,0.0,0.0,15.504412573075516,0.0
+11,0,San Patricio,Owner Occupied,Not for sale,0.0,0.0,18.30230784587389,0.0
+11,1,San Patricio,Landlord,Rented,0.0,0.0,17.902307845873885,0.0
+12,0,San Patricio,Owner Occupied,Not for sale,0.0,0.0,20.787214495661892,0.0
+12,1,San Patricio,Landlord,Rented,0.0,0.0,20.387214495661887,0.0
+13,0,San Patricio,Owner Occupied,Not for sale,0.0,0.0,23.35216385312343,0.0
+13,1,San Patricio,Landlord,Rented,0.0,0.0,22.952163853123423,0.0
+14,0,San Patricio,Owner Occupied,Not for sale,0.0,0.0,25.991221182738688,0.0
+14,1,San Patricio,Landlord,Rented,0.0,0.0,25.591221182738682,0.0
+15,0,San Patricio,Owner Occupied,Not for sale,0.0,0.0,28.699271383840898,0.0
+15,1,San Patricio,Landlord,Rented,0.0,0.0,28.299271383840892,0.0
+16,0,San Patricio,Owner Occupied,Not for sale,0.0,0.0,31.47186010608068,0.0
+16,1,San Patricio,Landlord,Rented,0.0,0.0,31.071860106080674,0.0
+17,0,San Patricio,Owner Occupied,For sale,0.0,0.0,34.305073450136895,0.0
+17,1,San Patricio,Landlord,Rented,0.0,0.0,33.90507345013689,0.0
+18,0,San Patricio,Owner Occupied,For sale,0.0,0.0,37.19544520803306,0.0
+18,1,San Patricio,Landlord,Rented,0.0,0.0,36.79544520803305,0.0
+19,0,San Patricio,Owner Occupied,For sale,0.0,0.0,40.1398841871995,0.0
+19,1,San Patricio,Landlord,Rented,0.0,0.0,39.73988418719949,0.0
+20,0,San Patricio,Owner Occupied,For sale,0.0,0.0,43.13561646075349,0.0
+20,1,San Patricio,Landlord,Rented,0.0,0.0,42.735616460753484,0.0
+21,0,San Patricio,Owner Occupied,For sale,0.0,0.0,46.18013889847691,0.0
+21,1,San Patricio,Landlord,Rented,0.0,0.0,45.780138898476906,0.0
+22,0,San Patricio,Owner Occupied,For sale,0.0,0.0,49.271181351835224,0.0
+22,1,San Patricio,Landlord,Rented,0.0,0.0,48.87118135183522,0.0
+23,0,San Patricio,Owner Occupied,For sale,0.0,0.0,52.406675567764374,0.0
+23,1,San Patricio,Landlord,Rented,0.0,0.0,52.00667556776437,0.0
+24,0,San Patricio,Owner Occupied,For sale,0.0,0.0,55.58472939811232,0.0
+24,1,San Patricio,Landlord,Rented,0.0,0.0,55.18472939811232,0.0
+25,0,San Patricio,Owner Occupied,For sale,0.0,0.0,58.80360522298052,0.0
+25,1,San Patricio,Landlord,Rented,0.0,0.0,58.40360522298052,0.0
+26,0,San Patricio,Owner Occupied,For sale,0.0,0.0,62.061701761002006,0.0
+26,1,San Patricio,Landlord,Rented,0.0,0.0,61.661701761002,0.0
+27,0,San Patricio,Owner Occupied,For sale,0.0,0.0,65.35753862700633,0.0
+27,1,San Patricio,Landlord,Rented,0.0,0.0,64.95753862700633,0.0
+28,0,San Patricio,Owner Occupied,For sale,0.0,0.0,68.68974313718154,0.0
+28,1,San Patricio,Landlord,Rented,0.0,0.0,68.28974313718153,0.0
+29,0,San Patricio,Owner Occupied,For sale,0.0,0.0,72.05703896716801,0.0
+29,1,San Patricio,Landlord,Rented,0.0,0.0,71.657038967168,0.0
+30,0,San Patricio,Owner Occupied,For sale,0.0,0.0,75.45823634883017,0.0
+30,1,San Patricio,Landlord,Rented,0.0,0.0,75.05823634883016,0.0
+31,0,San Patricio,Owner Occupied,For sale,0.0,0.0,78.89222355331532,0.0
+31,1,San Patricio,Landlord,Rented,0.0,0.0,78.49222355331531,0.0
+32,0,San Patricio,Owner Occupied,For sale,0.0,0.0,82.35795945611504,0.0
+32,1,San Patricio,Landlord,Rented,0.0,0.0,81.95795945611503,0.0
+33,0,San Patricio,Owner Occupied,For sale,0.0,0.0,85.85446701758153,0.0
+33,1,San Patricio,Landlord,Rented,0.0,0.0,85.45446701758152,0.0
+34,0,San Patricio,Owner Occupied,For sale,0.0,0.0,89.3808275421977,0.0
+34,1,San Patricio,Landlord,Rented,0.0,0.0,88.98082754219769,0.0
+35,0,San Patricio,Owner Occupied,For sale,0.0,0.0,92.9361756036871,0.0
+35,1,San Patricio,Landlord,Rented,0.0,0.0,92.5361756036871,0.0
+36,0,San Patricio,Owner Occupied,For sale,0.0,0.0,96.51969454214321,0.0
+36,1,San Patricio,Landlord,Rented,0.0,0.0,96.11969454214321,0.0
+37,0,San Patricio,Owner Occupied,For sale,0.0,0.0,100.13061245478744,0.0
+37,1,San Patricio,Landlord,Rented,0.0,0.0,99.73061245478743,0.0
+38,0,San Patricio,Owner Occupied,For sale,0.0,0.0,103.76819861451382,0.0
+38,1,San Patricio,Landlord,Rented,0.0,0.0,103.36819861451382,0.0
+39,0,San Patricio,Owner Occupied,For sale,0.0,0.0,107.43176026064347,0.0
+39,1,San Patricio,Landlord,Rented,0.0,0.0,107.03176026064347,0.0
+40,0,San Patricio,Owner Occupied,For sale,0.0,0.0,111.1206397147574,0.0
+40,1,San Patricio,Landlord,Rented,0.0,0.0,110.7206397147574,0.0
+41,0,San Patricio,Owner Occupied,For sale,0.0,0.0,114.8342117814617,0.0
+41,1,San Patricio,Landlord,Rented,0.0,0.0,114.4342117814617,0.0
+42,0,San Patricio,Owner Occupied,For sale,0.0,0.0,118.57188139974507,0.0
+42,1,San Patricio,Landlord,Rented,0.0,0.0,118.17188139974506,0.0
+43,0,San Patricio,Owner Occupied,For sale,0.0,0.0,122.33308151543864,0.0
+43,1,San Patricio,Landlord,Rented,0.0,0.0,121.93308151543863,0.0
+44,0,San Patricio,Owner Occupied,For sale,0.0,0.0,126.1172711493569,0.0
+44,1,San Patricio,Landlord,Rented,0.0,0.0,125.71727114935689,0.0
+45,0,San Patricio,Owner Occupied,For sale,0.0,0.0,129.92393363912723,0.0
+45,1,San Patricio,Landlord,Rented,0.0,0.0,129.52393363912722,0.0
+46,0,San Patricio,Owner Occupied,For sale,0.0,0.0,133.75257503561633,0.0
+46,1,San Patricio,Landlord,Rented,0.0,0.0,133.35257503561633,0.0
+47,0,San Patricio,Owner Occupied,For sale,0.0,0.0,137.6027226373264,0.0
+47,1,San Patricio,Landlord,Rented,0.0,0.0,137.2027226373264,0.0
+48,0,San Patricio,Owner Occupied,For sale,0.0,0.0,141.4739236482343,0.0
+48,1,San Patricio,Landlord,Rented,0.0,0.0,141.07392364823428,0.0
+49,0,San Patricio,Owner Occupied,For sale,0.0,0.0,145.3657439463449,0.0
+49,1,San Patricio,Landlord,Rented,0.0,0.0,144.9657439463449,0.0

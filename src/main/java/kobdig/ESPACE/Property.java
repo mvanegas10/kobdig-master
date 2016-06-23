@@ -231,6 +231,10 @@ public class Property {
 
     // METHODS
 
+    /**
+     * Generates a step in the simulation
+     * @param time The time in the simulation
+     */
     public void step(int time){
 
         previousPrice = currentPrice;
@@ -238,12 +242,10 @@ public class Property {
         previousPotentialRent = currentPotentialRent;
         previousValue = currentValue;
 
-        currentPrice = (previousPrice - Math.exp(time) < 0)? 0: previousPrice - Math.exp(time);
-        currentPotentialRent = (previousPotentialRent + Math.log(time));
-        currentCapitalizedRent = (previousCapitalizedRent - Math.log(time));
-        currentValue = (previousValue - Math.exp(time) < 0)? 0: previousValue - Math.exp(time);
-
-
+        currentPrice = (previousPrice - Math.exp(time) < 0)? 0.0: previousPrice - Math.exp(time);
+        currentPotentialRent = (previousPotentialRent + Math.log(time + 1) < 0)? 0.0: previousPotentialRent + Math.log(time + 1);
+        currentCapitalizedRent = (previousCapitalizedRent - Math.log(time + 1) < 0)? 0.0: previousCapitalizedRent - Math.log(time + 1);
+        currentValue = (previousValue - Math.exp(time) < 0)? 0.0: previousValue - Math.exp(time);
 
     }
 

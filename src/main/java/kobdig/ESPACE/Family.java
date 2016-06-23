@@ -23,23 +23,41 @@ public class Family {
     private String property;
 
     /**
+     * ID of the family's rented property
+     */
+    private String rentedProperty;
+
+    /**
      * Purchasing power to buy home
      */
-    private double purchasingPower;
+    private double previousPurchasingPower;
 
     /**
      * Net monthly income to pay rent
      */
-    private double netMonthlyIncome;
+    private double previousNetMonthlyIncome;
+
+    /**
+     * Purchasing power to buy home
+     */
+    private double currentPurchasingPower;
+
+    /**
+     * Net monthly income to pay rent
+     */
+    private double currentNetMonthlyIncome;
 
     // CONSTRUCTOR
 
     public Family(String id, String lastname, double purchasingPower, double netMonthlyIncome) {
         this.id = id;
         this.property = null;
+        this.rentedProperty = null;
         this.lastname = lastname;
-        this.purchasingPower = purchasingPower;
-        this.netMonthlyIncome = netMonthlyIncome;
+        this.previousPurchasingPower = purchasingPower;
+        this.previousNetMonthlyIncome = netMonthlyIncome;
+        this.currentPurchasingPower = purchasingPower;
+        this.currentNetMonthlyIncome = netMonthlyIncome;
     }
 
     // GETTERS AND SETTERS
@@ -68,23 +86,47 @@ public class Family {
         this.property = property;
     }
 
-    public double getPurchasingPower() {
-        return purchasingPower;
+    public String getRentedProperty() {
+        return rentedProperty;
     }
 
-    public void setPurchasingPower(double purchasingPower) {
-        this.purchasingPower = purchasingPower;
+    public void setRentedProperty(String rentedProperty) {
+        this.rentedProperty = rentedProperty;
     }
 
-    public double getNetMonthlyIncome() {
-        return netMonthlyIncome;
+    public double getPreviousPurchasingPower() {
+        return previousPurchasingPower;
     }
 
-    public void setNetMonthlyIncome(double netMonthlyIncome) {
-        this.netMonthlyIncome = netMonthlyIncome;
+    public void setPreviousPurchasingPower(double previousPurchasingPower) {
+        this.previousPurchasingPower = previousPurchasingPower;
     }
 
-    // METHODS
+    public double getPreviousNetMonthlyIncome() {
+        return previousNetMonthlyIncome;
+    }
+
+    public void setPreviousNetMonthlyIncome(double previousNetMonthlyIncome) {
+        this.previousNetMonthlyIncome = previousNetMonthlyIncome;
+    }
+
+    public double getCurrentPurchasingPower() {
+        return currentPurchasingPower;
+    }
+
+    public void setCurrentPurchasingPower(double currentPurchasingPower) {
+        this.currentPurchasingPower = currentPurchasingPower;
+    }
+
+    public double getCurrentNetMonthlyIncome() {
+        return currentNetMonthlyIncome;
+    }
+
+    public void setCurrentNetMonthlyIncome(double currentNetMonthlyIncome) {
+        this.currentNetMonthlyIncome = currentNetMonthlyIncome;
+    }
+
+// METHODS
 
     /**
      * Returns YES if the family is landlord, otherwise, returns NO
@@ -95,8 +137,33 @@ public class Family {
         return "NO";
     }
 
+    /**
+     * Returns YES if the family is renting, otherwise, returns NO
+     * @return YES if the family is renting, otherwise, returns NO
+     */
+    public String isRenting(){
+        if (rentedProperty != null) return "YES";
+        return "NO";
+    }
+
+    /**
+     * Generates a step in the simulation
+     * @param time The time in the simulation
+     */
+    public void step(int time){
+        previousPurchasingPower = currentPurchasingPower;
+        previousNetMonthlyIncome = currentNetMonthlyIncome;
+        currentPurchasingPower = previousPurchasingPower + (previousPurchasingPower*Math.log(time + 1))/20;
+        currentNetMonthlyIncome = previousNetMonthlyIncome + (previousPurchasingPower*(0.001));
+    }
+
 
     public String toString(){
-        return id + "," + lastname  + "," + hasProperty() + "," + purchasingPower  + "," + netMonthlyIncome;
+        if (property != null)
+            return lastname  + "," + hasProperty() + "," + property + "," + isRenting() + ",," + currentPurchasingPower  + "," + currentNetMonthlyIncome;
+        if (rentedProperty != null)
+            return lastname  + "," + hasProperty() + ",," + isRenting() + "," + rentedProperty + "," + currentPurchasingPower  + "," + currentNetMonthlyIncome;
+        else
+            return lastname  + "," + hasProperty() + ",,"  + isRenting() + ",," + currentPurchasingPower  + "," + currentNetMonthlyIncome;
     }
 }
